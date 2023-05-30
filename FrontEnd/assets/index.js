@@ -10,12 +10,11 @@ async function getWorks() {
      }
 };
 
-// **************** INIT ********************
 
 const gallery = document.querySelector('.gallery');
 let filtres = document.querySelector('.filtres');
 
-//let boutons = Array.from(categories.children);
+
 
 let number = 0;
 
@@ -36,7 +35,7 @@ async function showWorks(){
         figure.appendChild(image);
         figure.appendChild(figcaption);
     });
-}
+};
 showWorks();
 
 /** Ajout des filtres */
@@ -125,33 +124,6 @@ button.addEventListener ('click', function() {
 
 
 
-
-
-let buttonId = null;  
-    const filterOnClick = function(e) {
-        e.preventDefault();
-        buttonId = e.target.getAttribute("id");
-        gallery.innerHTML="";
-
-        if (buttonId == "all"){ // For the "Tous" button, display all the projects
-            displayProjects(projects);
-        } else { // For the others button, the projects displayed match the buttons categories
-            const filteredProjects = projects.filter(function(project){
-                return project.category.name == buttonId;
-            });
-            displayProjects(filteredProjects);
-        };
-    };
-
-    /* Add the event listener on the categories buttons */
-    document.querySelectorAll(".filter").forEach(button => button.addEventListener("click",filterOnClick)); 
-
-
-    function displayProjects(array){
-        for (let i=0; i<array.length; i++){
-            const projectData = array[i]; // using the i element (object) of the array
-            showWorks(projectData);
-        }};
 
 
 
