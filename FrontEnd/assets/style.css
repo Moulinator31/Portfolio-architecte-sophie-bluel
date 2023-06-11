@@ -164,6 +164,18 @@ li:hover {
 	width: 100%;
 
 }
+
+/* Affichage des photos*/
+.active  {
+	display: flex;
+	background: #1D6154;
+	color: #fff;
+}
+.hide {
+	display: none;
+}
+
+
 #contact {
 	width: 50%;
 margin: auto;
