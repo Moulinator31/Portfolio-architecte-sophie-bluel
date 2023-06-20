@@ -91,8 +91,7 @@ async function filtre () {
 
 function tabsFilter(){
     const filterButtons = document.querySelectorAll('.filtresborder');/*Les filtres*/
-    const projets = document.querySelectorAll(".gallery img");/* Les images*/
-    console.log(projets);
+    const pictures = document.querySelectorAll(".gallery img");/* Les images*/
     
 
     const resetActive = () =>{
@@ -102,27 +101,26 @@ function tabsFilter(){
     };
 
    /*Appel toutes les images*/
-    const Showprojets = (element) => {
-        projets.forEach(projet => {
-            let category = projet.getAttribute('data-category-id');
+    const Showprojets = (filtreId) => {
+        pictures.forEach(picture => {
+            let categoryId = picture.dataset.categoryId;
             /* Button Tous*/
-            if (element === 'all'){
-                projet.parentNode.classList.remove('hide');
+            if (filtreId === 'all'){
+                picture.parentNode.classList.remove('hide');
                 return; /*Arrête l'action ici*/
             }
             /* Si le filtre est différent à la categorie alors il ajoute la Class, sinon il l'enlève*/
-            if (category !== element){
-                projet.parentNode.classList.add('hide');
+            if (categoryId !== filtreId){
+                picture.parentNode.classList.add('hide');
             } else {
-                projet.parentNode.classList.remove('hide');
+                picture.parentNode.classList.remove('hide');
             }
-            
+            console.log(filtreId);
         });
 
     }
     filterButtons.forEach(filterButton => {
         filterButton.addEventListener("click", () => {
-            //event.preventDefault();
             let filtre = filterButton.dataset.filtreId;
             Showprojets(filtre);
             resetActive();
