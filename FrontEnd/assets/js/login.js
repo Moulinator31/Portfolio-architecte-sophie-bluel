@@ -11,6 +11,7 @@ form.addEventListener('submit', (event) => {
   formLogin();
 });
 
+/*Cette fonction effectue le fetch (la requête)*/
 async function fetchLogin(type, options) {
   const url = 'http://localhost:5678/api/users/' + type;
   try {
@@ -23,9 +24,8 @@ async function fetchLogin(type, options) {
   catch (error) {
     return addError('request');
   }
-
 }
-
+/*Initialise le fetch du login*/
 async function loginForm(user) {
   const type = 'login';
   const content = user;
@@ -44,7 +44,7 @@ async function loginForm(user) {
 }
 
 
-/* Afficher les messages d'erreurs Email - PassWord*/
+/* Afficher les messages d'erreurs Email - PassWord */
 function addError(errorType) {
   var type = errorType;
   errorEmail.innerText = '';
@@ -79,10 +79,16 @@ function addError(errorType) {
 async function formLogin() {
   const email = loginEmail.value;
   const password = loginPassword.value;
-
+  /* Si l'email ou le password est différent alors on va envoyer un message d'erreur*/
   if (!email || !password) return addError('invalid_data');
+  /*Si le password est inférieur a 6 alors il retourne un message d'erreur "invalid_password"*/
   if (password.length < 6) return addError('invalid_password');
+  /**
+   * Si l'email est différent alors on va envoyer un message d'erreur.
+   * Grace à checkEmail va verifier que c'est bien un Email avec un @ et .com.
+  */
   const validEmail = checkEmail(email);
+
   if (!validEmail) {
     return addError('invalid_email');
   }
@@ -91,9 +97,7 @@ async function formLogin() {
 
   try {
     const req = await loginForm(user);
-    console.log(req);
     if (req.token) {
-      console.log(req.token);
       sessionStorage.setItem('token', req.token);
       window.location.href = "index.html";
     }

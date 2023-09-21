@@ -1,8 +1,10 @@
 import { getCategories } from "./client.js";
 
-/*Cette function va creer les filtres*/
+
+/*Cette function va creer les filtres grâce à la boucle forEach qui va recupérer les noms, l'id et ajouter une class*/
 export async function filtre() {
-    let filtres = document.querySelector('.filtres');
+    const filtres = document.querySelector('.filtres');
+    /*récupération des l'appel Api*/
     const categories = await getCategories();
 
     const buttonAll = document.createElement("button");
@@ -13,8 +15,8 @@ export async function filtre() {
 
     filtres.appendChild(buttonAll);
 
+    /*Cette boucle va creer les boutton et recuperer le name du bouton ainsi que la categorie et ajouter la class*/
     categories.forEach(category => {
-
 
         const button = document.createElement('button');
 
@@ -30,13 +32,10 @@ export async function filtre() {
 }
 
 
-/* function categoriser les images avec les filtres dans l'index.html*/
-
 export function tabsFilter() {
     const filterButtons = document.querySelectorAll('.filtresborder');/*Les filtres*/
-    const pictures = document.querySelectorAll(".gallery img");/* Les images*/
 
-
+    /*Enlève la class active au bouton quand je clique sur un autre bouton filtre*/
     const resetActive = () => {
         filterButtons.forEach(filterButton => {
             filterButton.classList.remove('active');
@@ -45,28 +44,33 @@ export function tabsFilter() {
 
     /*Appel toutes les images*/
     const Showprojets = (filtreId) => {
+        const pictures = document.querySelectorAll(".gallery img");/*les images*/
         pictures.forEach(picture => {
-            let categoryId = picture.dataset.categoryId;
-            /* Button Tous*/
+            const categoryId = picture.dataset.categoryId;
+            /* Si le filtreId est égale à all alors il va enlever la class "hide" et afficher toutes les images*/
             if (filtreId === 'all') {
                 picture.parentNode.classList.remove('hide');
                 return; /*Arrête l'action ici*/
             }
-            /* Si le filtre est différent à la categorie alors il ajoute la Class, sinon il l'enlève*/
+            /**
+             *  Si le filtre est différent à la categorie alors il ajoute la Class hide qui va enlever l'image.
+             * Sinon il l'enlève la class "hide" et affiche l'image.
+             */
             if (categoryId !== filtreId) {
                 picture.parentNode.classList.add('hide');
             } else {
                 picture.parentNode.classList.remove('hide');
             }
-            console.log(filtreId);
         });
 
     }
+    /*Au clique sur le bouton il jouera la fonction Showprojets qui va afficher */
     filterButtons.forEach(filterButton => {
         filterButton.addEventListener("click", () => {
-            let filtre = filterButton.dataset.filtreId;
+            const filtre = filterButton.dataset.filtreId;
             Showprojets(filtre);
             resetActive();
+            /*Quand je clique sur un bouton filtre ça ajoute la class "active" au bouton*/
             filterButton.classList.add('active');
         });
     });

@@ -10,55 +10,81 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
 		rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/style/style.css">
 </head>
 
 <body>
 	<div class="modale_container" style="display: none;">
-		<div class="modale_overlay"></div>
+		<div class="modale_overlay">
+			
+		</div>
+
 		<dialog>
 			<div class="icon_close_position">
-				<img class="icon_close" src="./assets/icons/close-svgrepo-com 1.png" alt="icon close">
+				<img class="icon_close" src="./assets/icons/close-svgrepo-com1.png" alt="icon close">
 			</div>
+
 			<p class="galerie_photo">Galerie photo</p>
+
 			<div class="modal_gallery">
+
 			</div>
-			<div class="modale_button_supp">
+
+			<div class="modale_supp">
 				<hr>
+
 				<button class="modal_button buttonAdd">Ajouter une photo</button>
+
 				<a class="modal_delete" href="#">Supprimer la photo</a>
 			</div>
 		</dialog>
 	</div>
+
 	<div class="modaleAdd_container" style="display: none;">
 		<div class="modale2_overlay"></div>
+
 		<dialog>
 			<div class="icon_close__flêche_position">
 				<img class="arrow" src="./assets/icons/arrow-left.png" alt="flêche gauche">
-				<img class="icon_close" id="close" src="./assets/icons/close-svgrepo-com 1.png" alt="icon close">
+
+				<img class="icon_close" id="close" src="./assets/icons/close-svgrepo-com1.png" alt="icon close">
 			</div>
+
 			<p class="galerie_photo">Ajout photo</p>
-			<form id="modale" class="modale_Form" method="post" enctype="multipart/form-data">
-				<div class="addPictures" class="image_container">
+
+			<form id="form-add-work" class="modale_Form" method="post">
+				<div class="addPictures image_container">
 					<img id="imagePreview" src="#" alt="">
-					<img id="imageModale" src="./assets/icons/picture-svgrepo-com 1 (1).png" alt="photo">
+
+					<img id="imageModale" src="./assets/icons/picture-svgrepo-com1(1).png" alt="photo">
+
 					<div class="parent-div" id="input_image_container">
+
 						<button>+ Ajouter photo</button>
-						<input class="file" type="file" id="file" name="photo">
+
+						<input class="file" type="file" id="file" name="image">
+
 						<p class="maxMo">jpg, png : 4mo max</p>
 					</div>
 				</div>
+
 				<div class="modaleFormModale">
 					<label for="title">Titre</label>
+
 					<input class="modale_text" type="text" id="title" name="title">
 				</div>
+
 				<div class="modaleFormModale">
 					<label for="categorie">Catégorie</label>
-					<select id="categorie" type="text">
+
+					<select id="categorie" name="category">
+
 					</select>
 				</div>
+
 				<hr>
-				<input class="modal_add_button" type="submit" value="Valider">
+
+				<button id="button_submit" class="modal_add_button" type="submit" disabled="disabled">Valider</button>
 			</form>
 		</dialog>
 	</div>
@@ -68,9 +94,13 @@
 		<nav>
 			<ul>
 				<li>projets</li>
+
 				<li>contact</li>
+
 				<li id="btnlogin"><a href="./login.html">login</a></li>
+
 				<li id="logout" class="hide"><a href="#">logout</a></li>
+
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -94,13 +124,19 @@
 		<section id="portfolio">
 			<div class="modification">
 				<h2>Mes Projets</h2>
-				<a href="#"><img class="modification_icon" src="./assets/icons/Group 6.png" alt="icon modifié"></a>
+
+				<a href="#"><img class="modification_icon hide" src="./assets/icons/Group6.png" alt="icon modifié"></a>
 			</div>
+
 			<div class="filtres">
+
 			</div>
+
 			<div class="gallery">
+
 			</div>
 		</section>
+
 		<section id="contact">
 			<h2>Contact</h2>
 			<p>Vous avez un projet ? Discutons-en !</p>
@@ -123,7 +159,7 @@
 			</ul>
 		</nav>
 	</footer>
-	<script type="module" src="./assets/index.js"></script>
+	<script type="module" src="./assets/js/index.js"></script>
 </body>
 
 </html>
